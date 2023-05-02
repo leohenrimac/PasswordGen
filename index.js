@@ -11,6 +11,9 @@ let isNumberClicked = false;
 let symbolEl = document.getElementById("symbol-el");
 let isSymbolClicked = false;
 
+let minusBtnEl = document.getElementById("minus-btn")
+let plusBtnEl = document.getElementById("plus-btn")
+
 let meterCount = 1
 
 let isReady = false
@@ -26,6 +29,8 @@ let addUpperToMasterArr = false
 let addNumberToMasterArr = false
 let addSymbolToMasterArr = false
 
+let genTextEl = document.getElementById("gen-text")
+
 let password1 = ""
 let password2 = ""
 
@@ -39,6 +44,8 @@ function lowerCase() {
         isLowerCaseClicked = true;
         meterCount += 3
         addLowerToMasterArr = true
+
+        genTextEl.textContent = "Set password length and press Generate passwords"
         
         
     }
@@ -62,6 +69,8 @@ function upperCase() {
         isUpperCaseClicked = true;
         meterCount += 3
         addUpperToMasterArr = true
+
+        genTextEl.textContent = "Set password length and press Generate passwords"
         
     }
     else if(isUpperCaseClicked) {
@@ -82,6 +91,8 @@ function numberCase() {
         isNumberClicked = true;
         meterCount += 3
         addNumberToMasterArr = true
+
+        genTextEl.textContent = "Set password length and press Generate passwords"
         
     }
     else if(isNumberClicked) {
@@ -103,6 +114,8 @@ function symbolCase() {
         meterCount += 4
         addSymbolToMasterArr = true
 
+        genTextEl.textContent = "Set password length and press Generate passwords"
+
     }
     else if(isSymbolClicked) {
         symbolEl.style.color = "#4ADF86";
@@ -120,40 +133,66 @@ let lengthCount = 8
 
 
 function minusCalc() {
-    if(lengthCount > 8) {
+    if(lengthCount > 9 && lengthCount < 16) {
         lengthCount --
         lengthTextEl.textContent = lengthCount 
         meterCount --
     }
+    else if(lengthCount == 9) {
+        lengthCount --
+        lengthTextEl.textContent = lengthCount
+        meterCount --
+        minusBtnEl.textContent = ""
+    }
+    else if(lengthCount == 16) {
+        lengthCount --
+        lengthTextEl.textContent = lengthCount
+        meterCount --
+        plusBtnEl.textContent = "+"
+    }
     else {
-        window.alert("Password cannot be less than 8 characters!")
+        lengthTextEl.textContent = 8
     }
     updateMeter() 
 }
 
 function plusCalc() {
-    if(lengthCount < 16) {
+    if(lengthCount == 8) {
+        minusBtnEl.textContent = "-"
         lengthCount ++
         lengthTextEl.textContent = lengthCount   
         meterCount ++
     }
+    else if(lengthCount > 8 && lengthCount < 15) {
+       
+        lengthCount ++
+        lengthTextEl.textContent = lengthCount   
+        meterCount ++
+    }
+    else if(lengthCount == 15){
+        lengthCount ++
+        lengthTextEl.textContent = lengthCount   
+        meterCount ++
+        plusBtnEl.textContent = ""
+        
+    }
     else {
-        window.alert("Password cannot be more than 16 characters!")
+        lengthTextEl.textContent = 16
     }
     updateMeter()
 }
 
 let meterEl = document.getElementById("meter")
 let meterTextEl = document.getElementById("meter-text")
-let testEl = document.getElementById("test")
-let test2El = document.getElementById("test-el")
-let test3El = document.getElementById("test-el-el")
+
+
 
 function updateMeter() {
     if(!isLowerCaseClicked && !isNumberClicked && !isSymbolClicked && !isUpperCaseClicked) {
         meterEl.value = 0
         meterTextEl.innerText = "Weak"
         meterTextEl.style.opacity = 0
+        genTextEl.textContent = "Select at least one password property and set its length"
 
     }
     else if (meterCount >= 3 && meterCount<= 9) {
@@ -217,6 +256,7 @@ function passGen2() {
 function generatePass() {
     if(!meterEl.value == 0) {
         getRandomPass()
+        genTextEl.textContent = "Click the button to copy the password"
     }
     else {
         window.alert("You need to select at least one property!")
@@ -226,12 +266,13 @@ function generatePass() {
 function copyText1() {
     let copyText = document.getElementById("pass-1").textContent;
     navigator.clipboard.writeText(copyText);
+    genTextEl.textContent = "First password was copied"
     
     
 }
 function copyText2() {
     let copyText = document.getElementById("pass-2").textContent;
     navigator.clipboard.writeText(copyText);
-    
+    genTextEl.textContent = "Second password was copied"
     
 }

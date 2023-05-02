@@ -26,7 +26,7 @@
             </div>   
             <p>Set password length</p>
             <div id="length-cont">
-                <button id="minus-btn" class="length-number" onclick="minusCalc()">-</button>
+                <button id="minus-btn" class="length-number" onclick="minusCalc()"></button>
                 <div id="length-text" class="length-number">8</div>
                 <button id="plus-btn" class="length-number" onclick="plusCalc()">+</button>
             </div>
@@ -41,7 +41,7 @@
         </div>
         <div id="result">
             <button id="generate-btn"onclick="generatePass()">Generate passwords</button>
-            <p class="gen-text">Click on the button to copy the password</p>
+            <p id="gen-text">Select at least one password property and set its length</p>
             <div class="password-cont">
                 <button id="pass-1" class="password-btn" onclick="copyText1()"> </button>
                 <button id="pass-2" class="password-btn" onclick="copyText2()"> </button>

@@ -233,6 +233,6 @@ button {
     opacity: 0;
 }
 
-.gen-text {
+#gen-text {
     margin: 30px auto 10px auto;
 }
