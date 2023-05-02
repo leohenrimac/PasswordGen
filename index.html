@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Karla:wght@400;700&display=swap" rel="stylesheet">
+    <title>Password Gen</title>
+</head>
+<body>
+    <div id="main">
+        <div id="title">
+            <h1>Generate a <span class="highlight">random password</span></h1>
+            <p id="sub-title">Never use an insecure password again.</p>
+        </div>
+        <div id="settings">
+            <p> Select password properties</p>
+            <div class="strength-cont">
+                <button class="strength-btn" id="lower-case-el" onclick="lowerCase()">Lowercase letters</button>
+                <button class="strength-btn" id="upper-case-el" onclick="upperCase()">Uppercase letters</button>
+                <button class="strength-btn" id="number-el" onclick="numberCase()">Numbers</button>
+                <button class="strength-btn" id="symbol-el" onclick="symbolCase()">Symbols</button>
+            </div>   
+            <p>Set password length</p>
+            <div id="length-cont">
+                <button id="minus-btn" class="length-number" onclick="minusCalc()">-</button>
+                <div id="length-text" class="length-number">8</div>
+                <button id="plus-btn" class="length-number" onclick="plusCalc()">+</button>
+            </div>
+             
+        </div>
+        <p>Password Strength</p>
+        <div class="meter-cont">
+            <div>
+               <meter id="meter" value="0" min="0" max="100" low="35" high="75" optimum="100"></meter> 
+            </div>
+            <div id="meter-text">Weak</div>
+        </div>
+        <div id="result">
+            <button id="generate-btn"onclick="generatePass()">Generate passwords</button>
+            <p class="gen-text">Click on the button to copy the password</p>
+            <div class="password-cont">
+                <button id="pass-1" class="password-btn" onclick="copyText1()"> </button>
+                <button id="pass-2" class="password-btn" onclick="copyText2()"> </button>
+            </div>
+        </div>
+    </div>
+   
+    <script src="index.js"></script>
+</body>
+</html>
