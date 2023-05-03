@@ -81,7 +81,7 @@ function lowerCase() {
         meterCount -= 3
         addLowerToMasterArr = false 
     }
-    // Awals called after pressing a button to reflect the password strength meter
+    // Always called after pressing a button to reflect the password strength meter
     updateMeter()
 }
 
